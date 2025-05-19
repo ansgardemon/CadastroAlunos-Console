@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CadastroAlunos_Console.Controller;
+using CadastroAlunos_Console.Model;
+
 
 namespace CadastroAlunos_Console.View
 {
@@ -27,19 +29,21 @@ namespace CadastroAlunos_Console.View
                 opcao = int.Parse(Console.ReadLine());
 
 
-                switch(opcao)
+                switch (opcao)
                 {
-                    case 1: CadastrarAluno();
-                    break;
+                    case 1:
+                        CadastrarAluno();
+                        break;
 
-                    //case 2: ListarAlunos();
-                    //break;
+                    case 2:
+                        ListarAlunos();
+                        break;
 
-                    //case 3: AtualizarAluno();
-                    //break;
+                        //case 3: AtualizarAluno();
+                        //break;
 
-                    //case 4: ExcluirAluno();
-                    //break;
+                        //case 4: ExcluirAluno();
+                        //break;
 
 
 
@@ -73,5 +77,15 @@ namespace CadastroAlunos_Console.View
             Console.WriteLine("Aluno cadastrado com sucesso");
         }
 
+        private void ListarAlunos()
+        {
+            List<Aluno> alunos = controller.ListarAlunos();
+            Console.WriteLine("Lista de Alunos:");
+            foreach (var aluno in alunos)
+            {
+                Console.WriteLine($"ID: {aluno.Id} | Nome: {aluno.Nome} | CPF: {aluno.Cpf} | Curso: {aluno.Curso} | Data de Nascimento: {aluno.DataNascimento}");
+            }
+
+        }
     }
 }
