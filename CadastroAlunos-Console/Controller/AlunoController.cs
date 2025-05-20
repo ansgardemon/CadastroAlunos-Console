@@ -28,7 +28,7 @@ namespace CadastroAlunos_Console.Controller
 
 
 
-        public bool AtualizarAluno(int id, string nome, string curso, DateTime dataNascimento)
+        public bool AtualizarAluno(int id, string nome, string cpf, string curso, DateTime dataNascimento)
         {
             Aluno aluno = alunos.Find(a => a.Id == id);
             if (nome == null) return false;
@@ -36,8 +36,15 @@ namespace CadastroAlunos_Console.Controller
             aluno.Nome = nome;
             aluno.Curso = curso;
             aluno.DataNascimento = dataNascimento;
-            aluno.Cpf = curso;
+            aluno.Cpf = cpf;
             return true;
+        }
+
+        public bool ExcluirAluno(int id)
+        {
+            Aluno aluno = alunos.Find(a => a.Id == id);
+            return aluno != null && alunos.Remove(aluno);
+
         }
 
 

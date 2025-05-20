@@ -39,11 +39,12 @@ namespace CadastroAlunos_Console.View
                         ListarAlunos();
                         break;
 
-                        //case 3: AtualizarAluno();
-                        //break;
+                    case 3: AtualizarAluno();
+                        break;
 
-                        //case 4: ExcluirAluno();
-                        //break;
+                    case 4:
+                        ExcluirAluno();
+                        break;
 
 
 
@@ -85,6 +86,41 @@ namespace CadastroAlunos_Console.View
             {
                 Console.WriteLine($"ID: {aluno.Id} | Nome: {aluno.Nome} | CPF: {aluno.Cpf} | Curso: {aluno.Curso} | Data de Nascimento: {aluno.DataNascimento}");
             }
+
+        }
+
+
+
+        private void AtualizarAluno()
+        {
+            Console.WriteLine("Digite o ID do aluno a ser atualizado:");
+            int id = int.Parse(Console.ReadLine());
+
+
+            Console.WriteLine("Novo nome: ");
+            string nome = Console.ReadLine();
+            Console.WriteLine("Novo CPF: ");
+            string cpf = Console.ReadLine();
+            Console.WriteLine("Novo curso: ");
+            string curso = Console.ReadLine();
+            Console.WriteLine("Nova data de nascimento: (DD/MM/AAAA) ");
+            DateTime data = DateTime.Parse(Console.ReadLine());
+
+
+
+            bool atualizado = controller.AtualizarAluno(id,nome, cpf, curso , data);
+
+
+
+        }
+
+        public void ExcluirAluno()
+        {
+            Console.WriteLine("Digite o ID a ser digitado: ");
+            int id = int.Parse(Console.ReadLine());
+
+            bool excluido = controller.ExcluirAluno(id);
+            Console.WriteLine(excluido ? "Aluno excluído com sucesso!" : "Aluno não excluido!");
 
         }
     }
